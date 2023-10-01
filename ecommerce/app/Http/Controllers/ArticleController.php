@@ -11,23 +11,25 @@ class ArticleController extends Controller
     public function index()
     {
         $articles = Article::with('scategories')->get()->toArray();
-        return array_reverse($articles);  
+        $res = array_reverse($articles);
+        return response()->json($res);
+  
     }
     
         public function store(Request $request)
         {
-            $article = new Article([
-                'designation' => $request->input('designation'),
-                'marque' => $request->input('marque'),
-                'reference' => $request->input('reference'),
-                'qtestock' => $request->input('qtestock'),
-                'prix' => $request->input('prix'),
-                'imageart' => $request->input('imageart'),
-                'scategorieID' => $request->input('scategorieID')
-            ]);
+            $article = new Article();
+            $article->designation= $request->input('designation');
+            $article->marque= $request->input('marque');
+            $article->reference= $request->input('reference');
+            $article->qtestock= $request->input('qtestock');
+            $article->prix= $request->input('prix');
+            $article->imageart= $request->input('imageart');
+            $article->scategorieID= $request->input('scategorieID');
+            
             $article->save();
     
-            return response()->json('Article créé !');
+            return response()->json($article);
         }
     
          
@@ -42,7 +44,7 @@ class ArticleController extends Controller
             $article = Article::find($id);
             $article->update($request->all());
     
-            return response()->json('Article MAJ !');
+            return response()->json($article);
     
         }
     
@@ -51,7 +53,7 @@ class ArticleController extends Controller
             $article = Article::find($id);
             $article->delete();
     
-            return response()->json('Article supprimé !');
+            return response()->json(['message' => 'Article deleted successfully']);
     
         }
     

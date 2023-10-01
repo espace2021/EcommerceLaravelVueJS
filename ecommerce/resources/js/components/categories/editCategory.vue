@@ -21,7 +21,7 @@
  
 
 <script setup>
-import axios from 'axios';
+import axios from "../config/axios.js";
 import { useRouter,useRoute } from 'vue-router';
 const router = useRouter() ;
 const route = useRoute();
@@ -32,7 +32,7 @@ const categorie = ref({});
 const fetchCategorie= async()=> {
     
         await axios
-                .get(`http://localhost:8000/api/categories/${route.params.id}`)
+                .get(`/categories/${route.params.id}`)
                 .then((res) => {
                     categorie.value = res.data;
                 })
@@ -42,7 +42,7 @@ const fetchCategorie= async()=> {
 
 const updateCategorie= async()=> {
             await    axios
-                    .patch(`http://localhost:8000/api/categories/${route.params.id}`, categorie.value)
+                    .patch(`/api/categories/${route.params.id}`, categorie.value)
                     .then(() => {
                         router.push({ name: 'homeCategories' });
                     })

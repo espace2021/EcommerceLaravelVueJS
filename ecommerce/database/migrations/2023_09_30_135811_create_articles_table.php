@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('articles', function (Blueprint $table) {
             $table->id();
-            $table->string('designation');
+            $table->string('designation',100)->unique();
             $table->string('marque');
             $table->string('reference');
             $table->string('qtestock');

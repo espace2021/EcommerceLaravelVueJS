@@ -20,14 +20,14 @@
 </template>
  
 <script setup>
-import axios from 'axios';
+import axios from "../config/axios.js";
 import { useRouter } from 'vue-router';
 const router = useRouter() 
 let  categorie= {nomcategorie:'',imagecategorie:''}
        
   const addCategorie=async ()=> {
                await axios
-                    .post('http://localhost:8000/api/categories', categorie)
+                    .post('/api/categories', categorie)
                     .then(() => (
                         router.push({ name: 'homeCategories' })
                     ))

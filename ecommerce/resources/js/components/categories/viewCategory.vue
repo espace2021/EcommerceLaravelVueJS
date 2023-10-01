@@ -28,7 +28,7 @@
 </template>
  
 <script setup>
-import axios from 'axios';
+import axios from "../config/axios.js";
 
 import { ref, onMounted } from 'vue';
 
@@ -40,7 +40,7 @@ la valeur réelle est stockée dans la propriété .value de cette référence.
 */
 const fetchCategories=async ()=> {
         await axios
-        .get('http://localhost:8000/api/categories/')
+        .get('/api/categories/')
             .then((response)=>{categories.value = response.data})
         .catch ((error) =>{
             console.error('Error fetching categories:', error);
@@ -49,7 +49,7 @@ const fetchCategories=async ()=> {
 
 const deleteCategorie=async (id)=> {
                 await axios
-                    .delete(`http://localhost:8000/api/categories/${id}`)
+                    .delete(`/api/categories/${id}`)
                     .then(() => {
                         let i = categories.value.map(data => data.id).indexOf(id);
                         categories.value.splice(i, 1)

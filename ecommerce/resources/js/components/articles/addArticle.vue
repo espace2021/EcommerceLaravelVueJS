@@ -31,7 +31,8 @@
    
     
    <script setup>
-   import axios from 'axios';
+   import axios from "../config/axios.js";
+
    import { useRouter } from 'vue-router';
    const router = useRouter() 
 
@@ -46,7 +47,7 @@ const Scategories = ref([]);
 
 const getscategories=()=>{
           
-    axios.get('http://localhost:8000/api/scategories').then(res => {
+    axios.get('/api/scategories').then(res => {
         Scategories.value = res.data;
             }).catch(error => {
                 console.log(error)
@@ -67,7 +68,7 @@ let  article= {
        
 const  ajouterproduit=()=>{
    
-          axios.post("http://localhost:8000/api/articles",article)
+          axios.post("/api/articles",article)
                .then(() => {
                      router.push('/articles')})
                .catch(error => {

@@ -35,7 +35,7 @@
 </template>
  
 <script setup>
-import axios from 'axios';
+import axios from "../config/axios.js";
 
 //Bootstrap and jQuery libraries
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -56,7 +56,7 @@ const Articles = ref([]);
 
 const getArticles=()=>{
                   axios
-                .get('http://localhost:8000/api/articles/')
+                .get('/api/articles/')
                 .then(response => { 
                                  Articles.value = response.data;
                                  $(function() {$('#example').DataTable();});
@@ -66,7 +66,7 @@ const getArticles=()=>{
 const deleteArticle=(id)=> { 
                  if (window.confirm("Etes-vous sûr de vouloir supprimer ?")) {
                    axios
-                    .delete(`http://localhost:8000/api/articles/${id}`)
+                    .delete(`/api/articles/${id}`)
                     .then(() => {
                         let i = Articles.value.map(data => data.id).indexOf(id);
                         Articles.value.splice(i, 1)
