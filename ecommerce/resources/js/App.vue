@@ -5,6 +5,7 @@
                 <div class="navbar-nav">
                     <router-link to="/" class="nav-item nav-link">Accueil</router-link>
                     <router-link to="/categories" class="nav-item nav-link">Categories</router-link>
+                    <router-link to="/articles" class="nav-item nav-link">  Articles </router-link> 
                 </div>
             </div>
         </nav>
