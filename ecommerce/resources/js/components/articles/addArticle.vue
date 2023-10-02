@@ -22,7 +22,18 @@
        </select>  
      </div>
      <div class="form-group">
-        <input type="text" class="form-control" placeholder="image" v-model="article.imageart">
+      <div>
+    <file-pond
+      ref="filepond"
+      name="file"
+      :files="files"
+      label-idle="Glissez et déposez votre fichier ou <span class='filepond--label-action'>cliquez pour parcourir</span>"
+      allow-multiple="false"
+      :server="serverOptions"
+      @processfile="handleFileUpload"
+    ></file-pond>
+    <img :src="uploadedImage" v-if="uploadedImage" alt="Uploaded Image" />
+  </div>
     </div>
     <button type="submit" class="btn btn-block btn-primary">Ajouter Produit</button>
    </form>
@@ -31,12 +42,29 @@
    
     
    <script setup>
-   import axios from "../config/axios.js";
+import { ref, onMounted, computed } from 'vue';
 
-   import { useRouter } from 'vue-router';
-   const router = useRouter() 
+import vueFilePond from 'vue-filepond';
+import 'filepond/dist/filepond.min.css';
 
-import { ref, onMounted } from 'vue';
+import FilePondPluginImagePreview from 'filepond-plugin-image-preview';
+import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.css';
+
+let FilePond= vueFilePond(FilePondPluginImagePreview);
+
+Vue.use(FilePond);
+
+let files= ref([]);
+let uploadedImage= ref("");
+
+import { useCloudinary } from '../config/useCloudinary.js';
+
+const { url, transformations } = useCloudinary(props.src)
+
+import axios from "../config/axios.js";
+   
+import { useRouter } from 'vue-router';
+const router = useRouter() 
 
 const Scategories = ref([]);
 
@@ -75,7 +103,37 @@ const  ajouterproduit=()=>{
                   console.error("There was an error!", error);})
                   }
              
-   
+const  handleFileUpload=()=> {
+      uploadedImage.value = files.value[0].serverId;
+    } 
+    
+    computed(() => {
+     serverOptions=()=> {
+      return {
+        process: (fieldName, file, metadata, load, error, progress, abort) => {
+         url(
+            file,
+            {
+              folder: "uploads",
+            },
+            (error, result) => {
+              if (error) {
+                console.error(error);
+                error("Upload failed");
+              } else {
+                load(result.secure_url);
+              }
+            },
+            {
+              resource_type: "auto",
+            }
+          );
+        }
+      }
+ 
+  }   
+})
+
    </script>
  
    

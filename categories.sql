@@ -6,5 +6,5 @@ INSERT INTO `categories` (`id`, `nomcategorie`, `imagecategorie`, `created_at`, 
 (6, 'Articles de sport', 'http://res.cloudinary.com/iset-sfax/image/upload/v1658749202/images/sport4.jpg.jpg', NULL, NULL),
 (7, 'Santé & Beauté', 'http://res.cloudinary.com/iset-sfax/image/upload/v1658749261/images/Sante-beaute.jpg.jpg', NULL, NULL),
 (8, 'Superette', 'http://res.cloudinary.com/iset-sfax/image/upload/v1658749330/images/Superettes.jpg.jpg', NULL, NULL),
-(9, 'jeux vidÃ©os', 'http://res.cloudinary.com/iset-sfax/image/upload/v1658593524/images/jeuxvideo.jpg.jpg', NULL, NULL);
+(9, 'jeux vidéos', 'http://res.cloudinary.com/iset-sfax/image/upload/v1658593524/images/jeuxvideo.jpg.jpg', NULL, NULL);
 
