@@ -27,7 +27,9 @@
                 <td>{{p.scategories.nomscategorie}}</td>
                 <td><img :src="p.imageart" :alt=p.designation width="100" /></td>
                 <td>
-                    <button @click.prevent="deleteArticle(p.id)" class="btn btn-danger">Supprimer</button></td>
+                  <router-link :to="{name: 'editArticle', params: { id: p.id }}" class="btn btn-success">Modifier</router-link>
+                  <button @click.prevent="deleteArticle(p.id)" class="btn btn-danger">Supprimer</button>
+                </td>
             </tr>
             </tbody>
         </table>

@@ -32,7 +32,7 @@ class ArticleController extends Controller
             return response()->json($article);
         }
     
-         
+       
         public function show($id)
         {
             $article= Article::find($id);

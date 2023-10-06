@@ -23,7 +23,6 @@
      </select>  
      </div>
 
-      <!-- FilePond pour le téléchargement d'images -->
       <div class="form-group">
         <div>
           
