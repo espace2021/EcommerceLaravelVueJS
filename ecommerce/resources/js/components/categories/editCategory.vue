@@ -1,4 +1,4 @@
-<template>Product
+<template>
     <div>
         <h3 class="text-center">Edit Category</h3>
         <div class="row">

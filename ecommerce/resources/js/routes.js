@@ -12,6 +12,11 @@ import AddArticle from "./components/articles/addArticle.vue";
 
 import EditArticle from "./components/articles/editArticle.vue";
 
+import Register from './components/Authentification/Register.vue';
+import Login from './components/Authentification/Login.vue';
+import Profile from './components/Authentification/Profile.vue';
+import Logout from './components/Authentification/Logout.vue';
+
 export const routes = [
     {
         name: 'accueil',
@@ -48,4 +53,25 @@ export const routes = [
         path: '/editArticle/:id',
         component: EditArticle
     },
+    {
+        name: 'register',
+        path: '/register',
+        component: Register
+    },
+    {
+        name: 'login',
+        path: '/login',
+        component: Login
+    },
+    {
+        name: 'profile',
+        path: '/profile',
+        component: Profile
+    },
+    {
+        name: 'logout',
+        path: '/logout',
+        component: Logout
+    },
+
 ];
