@@ -22,7 +22,7 @@
                 return Promise.reject(error);
                 }
                 ); 
-               await axios
+               if (user){await axios
                     .post('/api/auth/logout')
                     .then(response => (
                        localStorage.removeItem('user'),
@@ -30,7 +30,7 @@
                     ))
                     .catch(err => console.log(err))
                  }
-
+               }
 onMounted(async () => {
    await handleLogout()
 });

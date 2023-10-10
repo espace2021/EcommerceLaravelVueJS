@@ -39,10 +39,12 @@
     const   handleLogin=async()=> { 
                  await axios
                       .post('/api/auth/login', user)
-                      .then(response => (
-                          localStorage.setItem('user', JSON.stringify(response.data)),
+                      .then(response => {
+                        console.log(response)
+                          localStorage.setItem('user', JSON.stringify(response.data))
                          router.push({ name: 'profile' })
-                      ))
+                      }
+                      )
                       .catch(err => {console.log(err);alert("Erreur !") })
                    }
   

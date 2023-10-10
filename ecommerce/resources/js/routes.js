@@ -21,37 +21,44 @@ export const routes = [
     {
         name: 'accueil',
         path: '/',
-        component: Accueil
+        component: Accueil,
+        meta:{isAuth:true}
     },
     {
         name: 'homeCategories',
         path: '/categories',
-        component: ViewCategory
+        component: ViewCategory,
+        meta:{isAuth:true}
     },
     {
         name: 'createCategory',
         path: '/createCategory',
-        component: AddCategory
+        component: AddCategory,
+        meta:{isAuth:true}
     },
     {
         name: 'editCategory',
         path: '/editCategory/:id',
-        component: EditCategory
+        component: EditCategory,
+        meta:{isAuth:true}
     },
     {
         path: '/articles',
         name: 'articles',
-        component: ViewArticle
+        component: ViewArticle,
+        meta:{isAuth:true}
     },
     {
         path: '/addArticle',
         name: 'addArticle',
-        component: AddArticle
+        component: AddArticle,
+        meta:{isAuth:true}
     },
     {
         name: 'editArticle',
         path: '/editArticle/:id',
-        component: EditArticle
+        component: EditArticle,
+        meta:{isAuth:true}
     },
     {
         name: 'register',
@@ -66,12 +73,15 @@ export const routes = [
     {
         name: 'profile',
         path: '/profile',
-        component: Profile
+        component: Profile,
+        meta:{isAuth:true}
     },
     {
         name: 'logout',
         path: '/logout',
-        component: Logout
+        component: Logout,
+        meta:{isAuth:true}
     },
-
+    
 ];
+
