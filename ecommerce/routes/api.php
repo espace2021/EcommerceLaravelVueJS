@@ -22,7 +22,7 @@ Route::middleware('api')->group(function () {
 
 Route::middleware('api')->group(function () {
     Route::resource('scategories', ScategorieController::class);        
-});
+})->middleware('App\Http\Middleware\Authenticate');
 
 Route::get('/scat/{idcat}', [ScategorieController::class,'showSCategorieByCAT']);
 
