@@ -128,5 +128,18 @@ class AuthController extends Controller
         ]);
     }
 
+    /**
+     * check even the token is valid
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function ckecktoken() { 
+        /*
+Cette méthode vérifie si un utilisateur est actuellement authentifié. 
+Elle renverra true 
+        */
+            return response()->json(auth()->check());
+     }
+
 }
 

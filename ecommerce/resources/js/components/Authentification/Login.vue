@@ -40,8 +40,7 @@
                  await axios
                       .post('/api/auth/login', user)
                       .then(response => {
-                        console.log(response)
-                          localStorage.setItem('user', JSON.stringify(response.data))
+                         localStorage.setItem('user', JSON.stringify(response.data))
                          router.push({ name: 'profile' })
                       }
                       )
