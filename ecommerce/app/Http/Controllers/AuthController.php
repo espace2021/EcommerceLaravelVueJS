@@ -78,7 +78,8 @@ class AuthController extends Controller
      * @return \Illuminate\Http\JsonResponse
      */
     public function logout() {
-        $this->guard()->logout();
+       $this->guard()->logout();
+      
         return response()->json([
             'status' => 'success',
             'msg' => 'Logged out Successfully.'

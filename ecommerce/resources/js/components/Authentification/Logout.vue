@@ -11,7 +11,9 @@
 
    const  handleLogout=async()=> { 
                let user = JSON.parse(localStorage.getItem('user'));
-               axios.interceptors.request.use(
+               console.log(user)
+
+             /*  axios.interceptors.request.use(
                (config) => {
                if (user.token) {
                     config.headers['Authorization'] = `Bearer ${user.token}`;
@@ -21,15 +23,21 @@
                 (error) => {
                 return Promise.reject(error);
                 }
-                ); 
-               if (user){await axios
-                    .post('/api/auth/logout')
-                    .then(response => (
-                       localStorage.removeItem('user'),
-                       router.push('/login')
-                    ))
-                    .catch(err => console.log(err))
-                 }
+                );
+                */ 
+                try {
+        await axios.post('/api/auth/logout', null, {
+            headers: {
+                'Authorization': `Bearer ${user.token}`
+            }
+        });
+
+        localStorage.removeItem('user');
+        router.push('/login');
+    } catch (error) {
+        console.log(error);
+    }
+                 
                }
 onMounted(async () => {
    await handleLogout()

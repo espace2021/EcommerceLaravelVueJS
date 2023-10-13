@@ -1,4 +1,4 @@
-/*
+
 //cas sans refresh token
 
 import axios from 'axios';
@@ -7,8 +7,8 @@ axios.defaults.baseURL = 'http://localhost:8000';
 
 export default axios;
 
-*/
 
+/*
 // Cas de refresh token
 
 import axios from "axios";
@@ -120,3 +120,5 @@ function (error) {
 );
 
 export default axios;
+
+*/
