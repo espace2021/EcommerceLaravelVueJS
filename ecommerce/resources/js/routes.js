@@ -17,6 +17,9 @@ import Login from './components/Authentification/Login.vue';
 import Profile from './components/Authentification/Profile.vue';
 import Logout from './components/Authentification/Logout.vue';
 
+import HomeCart from './components/cart/HomeCart.vue';
+import Cart from './components/cart/Cart.vue';
+
 export const routes = [
     {
         name: 'accueil',
@@ -82,6 +85,15 @@ export const routes = [
         component: Logout,
         meta:{isAuth:true}
     },
-    
+     {
+        path:'/shopping',
+        name:'HomeCart',
+        component:HomeCart
+    },
+    {
+        path:'/cart',
+        name:'Cart',
+        component:Cart
+    },
 ];
 

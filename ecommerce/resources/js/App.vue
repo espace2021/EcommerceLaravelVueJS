@@ -7,7 +7,9 @@
                     <router-link to="/categories" class="nav-item nav-link">Categories</router-link>
                     <router-link to="/articles" class="nav-item nav-link">  Articles </router-link>
                     <router-link to="/register" class="nav-item nav-link">  Authentification </router-link>
-                    <router-link to="/logout" class="nav-item nav-link">  Logout </router-link>    
+                    <router-link to="/logout" class="nav-item nav-link">  Logout </router-link>  
+                    <router-link to="/shopping" class="nav-item nav-link"> Shopping Cart </router-link>   
+                    <AppHeader /> 
                 </div>
             </div>
         </nav>
@@ -15,6 +17,14 @@
     </div>
 </template>
  
-<script>
-    export default {}
+<script setup>
+  import AppHeader from './components/cart/AppHeader.vue';
+ import { onMounted } from 'vue';
+    import store from "./store"
+
+    onMounted(() => {
+         store.commit('initialiseStore')
+            }
+);
+
 </script>

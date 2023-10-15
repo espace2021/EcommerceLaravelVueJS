@@ -4,6 +4,7 @@ import { createRouter, createWebHashHistory } from "vue-router";
 import { routes } from "./routes";
 import 'bootstrap/dist/css/bootstrap.min.css'
 
+import store from "./store"
 
 import App from './App.vue'
 let app = createApp(App)
@@ -13,7 +14,8 @@ const router = createRouter({
     routes: routes,
 })
 
-app.use(router);
+app.use(router).use(store);
+
 app.mount("#app");
 
 router.beforeEach(async (to, from, next) => {
