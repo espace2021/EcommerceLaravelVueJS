@@ -39,32 +39,33 @@
    </div>
    </template>
    
-   <script>
-    import axios from "../config/axios.js";
-    import store from '../../store'
+   
+   <script setup>
+   import axios from "../config/axios.js";
+   import store from '../../store'
 
 import { ref, onMounted } from 'vue';
 
-   export default {
-     name: "Cart",
-     data() {
-       return {
+const Produits = ref([]);
+
+onMounted(() => {
+       store.commit('initialiseStore')
+       console.log(store.state.cart)
+       getProduits();
+           }
+);
        
-         Produits:[]
-       };
-     },
-     methods: {
-       
-       clearCart() { 
+      
+ const   clearCart=()=> { 
         store.commit("clearCart");
-       },
+       }
 
-       removeFromCart(item) { 
+ const  removeFromCart=(item)=> { 
         store.commit("removeFromCart", item);
-       },
+       }
 
-        plus(item) { 
-         this.Produits.map((pro)=>{
+ const  plus=(item)=> { 
+         Produits.value.map((pro)=>{
          if(pro.id==item.product.id){
            if(item.qty < pro.qtestock )
            {
@@ -75,28 +76,29 @@ import { ref, onMounted } from 'vue';
          }       
          });        
                 
-       },
+       }
 
-        minus(item) { 
-            store.commit("minusCart", item);  
+ const minus=(item)=> { 
+             
             
-       },
-       
-       getProduits(){
+            if(item.qty < 1 )
+           {
+            alert("Quantité stock non valable")
+           }          
+           else
+            store.commit("minusCart", item); 
+         }       
+      
+const  getProduits=()=>{
              
                axios.get('/api/articles/').then(res => {
-                   this.Produits = res.data;
+                   Produits.value = res.data;
                }).catch(error => {
                    console.log(error)
                });
-          },
-     },
-     beforeMount() {
-        store.commit('initialiseStore')
-       console.log(store.state.cart)
-       this.getProduits();
-     }
-   };
+          }
+
+  
    </script>
    
    <style>
