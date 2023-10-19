@@ -15,7 +15,7 @@
       </table>
        </div>
         <div class="col-10">
-              <button class="btn btn-info"> CHECKOUT </button> 
+          <router-link :to="{name: 'Payment'}" >   <button class="btn btn-info"> CHECKOUT </button> </router-link>
             <div>Total items : {{$store.state.cart.length }}</div>
             <div>Total price  : {{$store.state.cartTotal}}</div>
            <router-link :to="{name: 'HomeCart'}" > <button class="btn btn-success"> MORE </button> </router-link>     

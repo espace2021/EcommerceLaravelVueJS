@@ -11,6 +11,8 @@ use App\Http\Controllers\ArticleController;
 
 use App\Http\Controllers\AuthController;
 
+use App\Http\Controllers\StripeController;
+
 /*
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
@@ -41,4 +43,11 @@ Route::group([
     Route::post('/refresh', [AuthController::class, 'refresh']);
     Route::get('/user-profile', [AuthController::class, 'userProfile']);
     Route::get('/ckecktoken', [AuthController::class, 'ckecktoken']); 
+});
+
+Route::group([
+    'middleware' => 'api',
+    'prefix' => 'payment'
+], function ($router) {
+Route::post('/processpayment', [StripeController::class, 'processpayment']);
 });
