@@ -2,8 +2,11 @@
     <div>
         <router-link :to="{name: 'addArticle'}" class="btn btn-primary">Ajout Article</router-link>
     
-        <h2 class="text-center"> Liste des articles </h2>
- 
+        <div v-if="isLoading">
+            <h2> Loading .... </h2>
+        </div>
+        <div v-else>
+            <h2 class="text-center"> Liste des articles </h2>
         <table class="table" id="example">
             <thead>
             <tr>
@@ -34,6 +37,7 @@
             </tbody>
         </table>
     </div>
+</div> 
 </template>
  
 <script setup>
@@ -51,6 +55,8 @@ import { ref, onMounted } from 'vue';
 
 const Articles = ref([]);
 
+const isLoading = ref(true);
+
  onMounted(() => {
             getArticles();
             }
@@ -60,6 +66,7 @@ const getArticles=()=>{
                   axios
                 .get('/api/articles/')
                 .then(response => { 
+                    isLoading.value = false;                              
                                  Articles.value = response.data;
                                  $(function() {$('#example').DataTable();});
                 });   
