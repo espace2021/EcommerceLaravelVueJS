@@ -1,6 +1,11 @@
 <template>
     <div>
         <router-link :to="{name: 'createCategory'}" class="btn btn-primary">New Category</router-link>
+        
+        <div v-if="isLoading">
+            <h2> Loading .... </h2>
+        </div>
+        <div v-else>
         <h2 class="text-center">Categories List</h2>
  
         <table class="table">
@@ -24,6 +29,7 @@
             </tr>
             </tbody>
         </table>
+        </div>
     </div>
 </template>
  
@@ -33,6 +39,9 @@ import axios from "../config/axios.js";
 import { ref, onMounted } from 'vue';
 
 const categories = ref([]);
+
+const isLoading=ref(true);
+
 /*
 categories.value est une syntaxe spécifique à Vue.js pour accéder à la valeur réelle stockée 
 dans une référence Vue. Lorsque vous utilisez ref pour créer une référence réactive, 
@@ -41,7 +50,10 @@ la valeur réelle est stockée dans la propriété .value de cette référence.
 const fetchCategories=async ()=> {
         await axios
         .get('/api/categories/')
-            .then((response)=>{categories.value = response.data})
+            .then((response)=>{
+                isLoading.value=false;
+                categories.value = response.data
+            })
         .catch ((error) =>{
             console.error('Error fetching categories:', error);
         });
