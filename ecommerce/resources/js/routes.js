@@ -1,6 +1,8 @@
 import Accueil from './components/accueil.vue';
 
-import ViewCategory from './components/categories/viewCategory.vue';
+import FiltreView from './components/filtre/filtreView.vue';
+
+import ViewCategory from './components/categories/viewCategory6.vue';
 
 import AddCategory from './components/categories/addCategory.vue';
 
@@ -27,6 +29,11 @@ export const routes = [
         path: '/',
         component: Accueil,
         meta:{isAuth:true}
+    },
+    {
+        name:'filtreView',
+        path:'/filtreView',
+        component:FiltreView
     },
     {
         name: 'homeCategories',

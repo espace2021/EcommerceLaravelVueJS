@@ -3,10 +3,18 @@ import { createApp } from 'vue';
 import { createRouter, createWebHashHistory } from "vue-router";
 import { routes } from "./routes";
 import 'bootstrap/dist/css/bootstrap.min.css'
+import "@mdi/font/css/materialdesignicons.css";
+import "@fortawesome/fontawesome-free/css/all.css";
+
+import PrimeVue from 'primevue/config';
+import 'primevue/resources/themes/lara-light-teal/theme.css'
 
 import store from "./store"
 
 import App from './App.vue'
+
+import vuetify from "./vuetify";
+
 let app = createApp(App)
 
 const router = createRouter({
@@ -14,7 +22,7 @@ const router = createRouter({
     routes: routes,
 })
 
-app.use(router).use(store);
+app.use(router).use(store).use(vuetify).use(PrimeVue);
 
 app.mount("#app");
 

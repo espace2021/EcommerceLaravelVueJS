@@ -30,7 +30,7 @@ import { ref, onMounted } from 'vue';
 const categorie = ref({});
 
 const fetchCategorie= async()=> {
-    
+  
         await axios
                 .get(`/categories/${route.params.id}`)
                 .then((res) => {
