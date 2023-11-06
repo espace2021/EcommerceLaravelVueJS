@@ -2,7 +2,7 @@ import Accueil from './components/accueil.vue';
 
 import FiltreView from './components/filtre/filtreView.vue';
 
-import ViewCategory from './components/categories/viewCategory6.vue';
+import ViewCategory from './components/categories/viewCategory.vue';
 
 import AddCategory from './components/categories/addCategory.vue';
 
@@ -22,6 +22,8 @@ import Logout from './components/Authentification/Logout.vue';
 import HomeCart from './components/cart/HomeCart.vue';
 import Cart from './components/cart/Cart.vue';
 import Payment from './components/cart/Payment.vue';
+
+import ViewScategories from './components/scategories/ViewScategories.vue';
 
 export const routes = [
     {
@@ -70,6 +72,11 @@ export const routes = [
         path: '/editArticle/:id',
         component: EditArticle,
         meta:{isAuth:true}
+    },
+    {
+        name: 'scategories',
+        path: '/scategories',
+        component: ViewScategories
     },
     {
         name: 'register',

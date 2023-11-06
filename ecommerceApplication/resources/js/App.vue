@@ -5,6 +5,7 @@
                 <div class="navbar-nav">
                     <router-link to="/" class="nav-item nav-link">Accueil</router-link>
                     <router-link to="/filtreView" class="nav-item nav-link">Recherche</router-link>
+                    <router-link to="/scategories" class="nav-item nav-link">S/Categories</router-link>
                     <router-link to="/categories" class="nav-item nav-link">Categories</router-link>
                     <router-link to="/articles" class="nav-item nav-link">  Articles </router-link>
                     <router-link to="/register" class="nav-item nav-link">  Authentification </router-link>
