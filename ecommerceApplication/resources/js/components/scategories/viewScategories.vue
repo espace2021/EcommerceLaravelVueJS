@@ -1,4 +1,5 @@
 <template>
+    <addEditScaregories :scategories="scategories" :isEditing=false />
     <div class="card">
         <DataTable v-model:filters="filters" :value="scategories" paginator :rows="10" dataKey="id" filterDisplay="row" :loading="isLoading"
                 :globalFilterFields="['nomscategorie']">
@@ -30,21 +31,23 @@
                 </template>
             </Column>
           
-            <Column field="id" header="Actions" style="min-width: 12rem">
-               <template #body="slotProps">
-        
-        <button type="button" class="btn btn-warning rounded-circle btn-sm" @click="deleteSCategorie(slotProps.data.id)">
-            <i class="pi pi-trash" style="color: red"></i>
-        </button> 
-       
+            <Column field="id" header="Actions" style="min-width: 12rem; display: inline;">
+            <template #body="slotProps">
+                <div class="d-flex">
+                <addEditScaregories :scategories="scategories" :isEditing=true :scategorie="slotProps.data" />
+                <button type="button" class="btn btn-warning rounded-circle btn-sm" @click="deleteSCategorie(slotProps.data.id)">
+                    <i class="pi pi-trash" style="color: black"></i>
+                </button> 
+                </div>
             </template>
             </Column>
 
-        </DataTable>
+</DataTable>
     </div>
 </template>
 
 <script setup>
+import addEditScaregories from './addEditScaregories.vue';
 import { ref, onMounted } from 'vue';
 import { FilterMatchMode } from 'primevue/api';
 import axios from "../config/axios.js";
@@ -54,8 +57,6 @@ import Column from 'primevue/column';
 import DataTable from 'primevue/datatable';
 
 import InputText from 'primevue/inputtext';
-
-import Button from 'primevue/button';
 
 import 'primeicons/primeicons.css'
 
@@ -85,7 +86,7 @@ onMounted(() => {
 });
 
 
-const deleteSCategorie=async (id)=> {
+const deleteSCategorie=async (id)=> { 
              await axios
                     .delete(`/api/scategories/${id}`)
                     .then(() => {
