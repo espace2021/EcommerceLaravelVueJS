@@ -66,7 +66,7 @@ const handleSubmit = async () => {
       // Le paiement a réussi
       alert(response.data.message);
       //Vider le cart
-      store.commit('.Articlestore/clearCart')
+      store.commit('Articlestore/clearCart')
       //Redirection
       router.push('/shopping')
     } else {
