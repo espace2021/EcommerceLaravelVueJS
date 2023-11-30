@@ -21,12 +21,5 @@
  
 <script setup>
   import AppHeader from './components/cart/AppHeader.vue';
- import { onMounted } from 'vue';
-    import store from "./store"
-
-    onMounted(() => {
-         store.commit('initialiseStore')
-            }
-);
 
 </script>

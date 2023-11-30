@@ -4,22 +4,26 @@
       <input 
         type="text" 
         placeholder="Article name" 
-        v-model="nom"
+        v-model="nomLocal"
       />
       <button @click.prevent="addName" class="btn btn-primary">Add</button>
     </div>
   </template>
   
   <script setup>
-  import { defineProps, defineEmits } from 'vue';
+  import { defineProps, defineEmits, ref } from 'vue';
   
   const props = defineProps({
     nom: String
 })
+
+const nomLocal=ref('');
+nomLocal.value=props.nom;
+
   const emit = defineEmits(['custom-event-name']);
   
   const addName = () => {
-    emit('custom-event-name', { message: props.nom});
+    emit('custom-event-name', { message: nomLocal.value});
   };
 
   </script>

@@ -34,6 +34,13 @@ Route::middleware('api')->group(function () {
 
 Route::group([
     'middleware' => 'api',
+    'prefix' => 'paginate'
+], function ($router) {
+Route::get('/art', [ArticleController::class, 'indexPaginate']);
+});
+
+Route::group([
+    'middleware' => 'api',
     'prefix' => 'auth'
 
 ], function ($router) {

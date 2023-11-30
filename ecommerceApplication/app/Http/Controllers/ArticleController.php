@@ -8,6 +8,12 @@ use App\Models\Article;
 
 class ArticleController extends Controller
 {
+    public function indexPaginate(){
+        $articles = Article::paginate(10);
+       
+        return response()->json($articles);
+    }
+
     public function index()
     {
         $articles = Article::with('scategories')->get()->toArray();

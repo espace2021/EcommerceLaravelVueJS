@@ -1,8 +1,8 @@
 <template>
-     
+
       <div class="row">
           <div class="col-md-12" style="display:flex;flex-wrap:wrap;justify-content:center">
-            <div class="card" style="width: 18rem;margin:12px" v-for="prod in Articles" :key="prod.id">
+            <div class="card" style="width: 18rem;margin:6px" v-for="prod in Articles" :key="prod.id">
               <img class="card-img-top" :src="prod.imageart" :alt=prod.designation  width="70">
               <div class="card-body">
                   <h5 class="card-title">{{ prod.designation }}</h5>
@@ -18,9 +18,11 @@
             </div>  
           </div>
       </div>
-  </template>
+     
+    </template>
   
   <script setup>
+
     import axios from "../config/axios.js";
     import store from '../../store'
 
@@ -30,13 +32,15 @@ const Articles = ref([]);
 
  onMounted(() => {
             getArticles();
+                     
             }
 );
 
-const getArticles=()=>{
-                  axios
-                .get('/api/articles/')
-                .then(response => { 
+const getArticles=(page=1)=>{
+                
+           axios.get('/api/articles/')
+          // axios.get(`/api/paginate/art`, { 'perPage': page })
+               .then(response => { 
                                  Articles.value = response.data;
                                  
                 });   
@@ -44,11 +48,11 @@ const getArticles=()=>{
           
 const    addToCart=(prod)=> {
   
-              store.commit("addCart", {product:prod,qty:1});
+  store.commit("Articlestore/addCart", {product:prod,qty:1});
+
                }     
 
-  
-     
+    
         
   </script>
   

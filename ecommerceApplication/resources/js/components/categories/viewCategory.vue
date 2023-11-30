@@ -31,9 +31,12 @@
         </table>
         </div>
     </div>
+   
 </template>
  
 <script setup>
+
+
 import axios from "../config/axios.js";
 
 import { ref, onMounted } from 'vue';

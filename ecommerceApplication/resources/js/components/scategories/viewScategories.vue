@@ -34,7 +34,7 @@
             <Column field="id" header="Actions" style="min-width: 12rem; display: inline;">
             <template #body="slotProps">
                 <div class="d-flex">
-                <addEditScaregories :scategories="scategories" :isEditing=true :scategorie="slotProps.data" />
+                    <addEditScaregories :scategories="scategories" :isEditing=true :scategorie="slotProps.data" />
                 <button type="button" class="btn btn-warning rounded-circle btn-sm" @click="deleteSCategorie(slotProps.data.id)">
                     <i class="pi pi-trash" style="color: black"></i>
                 </button> 

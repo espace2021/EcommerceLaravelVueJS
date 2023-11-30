@@ -1,8 +1,8 @@
 <template>
-    <div v-if="$store.state.cart.length > 0" style="display:flex">
+    <div v-if="$store.state.Articlestore.cart.length > 0" style="display:flex">
         <div class="col-10">
       <table>
-       <tr v-for="(c) of $store.state.cart" :key="c.product.id">
+       <tr v-for="(c) of $store.state.Articlestore.cart" :key="c.product.id">
          <td><img :src="c.product.imageart" :alt="c.product.designation" width="50"></td>  
          <td>{{ c.product.designation }}</td>
          <td>- Prix : {{ c.product.prix }} TND </td>
@@ -16,8 +16,8 @@
        </div>
         <div class="col-10">
           <router-link :to="{name: 'Payment'}" >   <button class="btn btn-info"> CHECKOUT </button> </router-link>
-            <div>Total items : {{$store.state.cart.length }}</div>
-            <div>Total price  : {{$store.state.cartTotal}}</div>
+            <div>Total items : {{$store.state.Articlestore.cart.length }}</div>
+            <div>Total price  : {{$store.state.Articlestore.cartTotal}}</div>
            <router-link :to="{name: 'HomeCart'}" > <button class="btn btn-success"> MORE </button> </router-link>     
            <button class="btn btn-secondary" @click="clearCart()"> CLEAR </button>
        </div>
@@ -49,19 +49,19 @@ import { ref, onMounted } from 'vue';
 const Produits = ref([]);
 
 onMounted(() => {
-       store.commit('initialiseStore')
-       console.log(store.state.cart)
+       store.commit('Articlestore/initialiseStore')
+       console.log(store.state.Articlestore.cart)
        getProduits();
            }
 );
        
       
  const   clearCart=()=> { 
-        store.commit("clearCart");
+        store.commit("Articlestore/clearCart");
        }
 
  const  removeFromCart=(item)=> { 
-        store.commit("removeFromCart", item);
+        store.commit("Articlestore/removeFromCart", item);
        }
 
  const  plus=(item)=> { 
@@ -69,7 +69,7 @@ onMounted(() => {
          if(pro.id==item.product.id){
            if(item.qty < pro.qtestock )
            {
-            store.commit("plusCart", item);  
+            store.commit("Articlestore/plusCart", item);  
            }          
            else
                  alert("Quantité stock indisponible")
@@ -86,7 +86,7 @@ onMounted(() => {
             alert("Quantité stock non valable")
            }          
            else
-            store.commit("minusCart", item); 
+            store.commit("Articlestore/minusCart", item); 
          }       
       
 const  getProduits=()=>{
