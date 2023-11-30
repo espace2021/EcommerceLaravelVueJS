@@ -38,7 +38,7 @@ let email=ref("");
 
 onMounted(async () => {
 
-  amount.value=store.state.cartTotal;
+  amount.value=store.state.Articlestore.cartTotal;
 
   stripe.value = await stripePromise;
   const elements = stripe.value.elements();
@@ -66,7 +66,7 @@ const handleSubmit = async () => {
       // Le paiement a réussi
       alert(response.data.message);
       //Vider le cart
-      store.commit('clearCart')
+      store.commit('.Articlestore/clearCart')
       //Redirection
       router.push('/shopping')
     } else {
