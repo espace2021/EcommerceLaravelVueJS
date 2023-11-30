@@ -8,9 +8,9 @@ const state=  ({
           if(localStorage.getItem('cart')){
            state.cart = JSON.parse(localStorage.getItem('cart'))
           }
-          if(localStorage.getItem('cartTotal')){
+         /* if(localStorage.getItem('cartTotal')){
           state.cartTotal = parseFloat(localStorage.getItem('cartTotal')) 
-          }
+          }*/
           return true;
       },
       
@@ -18,11 +18,12 @@ const state=  ({
        if(localStorage.getItem('cart')){
        localStorage.removeItem('cart');
        state.cart =[];
-      }
-      if(localStorage.getItem('cartTotal')){
-       localStorage.removeItem('cartTotal');
        state.cartTotal =0;
       }
+    /*  if(localStorage.getItem('cartTotal')){
+       localStorage.removeItem('cartTotal');
+       state.cartTotal =0;
+      }*/
       return true;
       },
       
@@ -43,7 +44,7 @@ const state=  ({
        }, 0);
       
         //saving in web storage
-       localStorage.setItem('cartTotal',JSON.stringify(state.cartTotal));
+      // localStorage.setItem('cartTotal',JSON.stringify(state.cartTotal));
        localStorage.setItem('cart',JSON.stringify(state.cart));
       }
       },
@@ -66,7 +67,7 @@ const state=  ({
         }, 0);
       
       //saving in web storage
-        localStorage.setItem('cartTotal',JSON.stringify(state.cartTotal));
+      //  localStorage.setItem('cartTotal',JSON.stringify(state.cartTotal));
         localStorage.setItem('cart',JSON.stringify(state.cart));
       },
       removeFromCart(state,payload){
@@ -83,7 +84,7 @@ const state=  ({
        }, 0);
       
         //saving in web storage
-       localStorage.setItem('cartTotal',JSON.stringify(state.cartTotal));
+      // localStorage.setItem('cartTotal',JSON.stringify(state.cartTotal));
        localStorage.setItem('cart',JSON.stringify(state.cart));
       },
       
@@ -106,7 +107,7 @@ const state=  ({
          }, 0);
       
        //saving in web storage
-         localStorage.setItem('cartTotal',JSON.stringify(state.cartTotal));
+        // localStorage.setItem('cartTotal',JSON.stringify(state.cartTotal));
          localStorage.setItem('cart',JSON.stringify(state.cart));
 
         }
