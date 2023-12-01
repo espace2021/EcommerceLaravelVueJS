@@ -63,7 +63,7 @@ const handleSubmit = async () => {
 
     if (response.data.message) {
       console.log(response.data.message);
-      // Le paiement a réussi
+      // Le paiement est réussi
       alert(response.data.message);
       //Vider le cart
       store.commit('Articlestore/clearCart')

@@ -1,16 +1,29 @@
 const state=  ({
+
     cart:[],
     cartTotal:0,
-  });
-
-
+  })
  const   mutations =  ({
-              
+         async initialiseStore(state) {
+          if(localStorage.getItem('cart')){
+           state.cart = JSON.parse(localStorage.getItem('cart'))
+          }
+         /* if(localStorage.getItem('cartTotal')){
+          state.cartTotal = parseFloat(localStorage.getItem('cartTotal')) 
+          }*/
+          return true;
+      },
+      
       async clearCart(state){
-     
+       if(localStorage.getItem('cart')){
+       localStorage.removeItem('cart');
        state.cart =[];
        state.cartTotal =0;
-    
+      }
+    /*  if(localStorage.getItem('cartTotal')){
+       localStorage.removeItem('cartTotal');
+       state.cartTotal =0;
+      }*/
       return true;
       },
       
@@ -30,10 +43,11 @@ const state=  ({
          return parseFloat(accumulator) + parseFloat(object.product.prix*object.qty);
        }, 0);
       
-       
+        //saving in web storage
+      // localStorage.setItem('cartTotal',JSON.stringify(state.cartTotal));
+       localStorage.setItem('cart',JSON.stringify(state.cart));
       }
       },
-
       minusCart(state,payload){
       
       //update quantity 
@@ -52,6 +66,9 @@ const state=  ({
           return parseFloat(accumulator) + parseFloat(object.product.prix*object.qty);
         }, 0);
       
+      //saving in web storage
+      //  localStorage.setItem('cartTotal',JSON.stringify(state.cartTotal));
+        localStorage.setItem('cart',JSON.stringify(state.cart));
       },
       removeFromCart(state,payload){
       
@@ -66,6 +83,9 @@ const state=  ({
          return parseFloat(accumulator) + parseFloat(object.product.prix*object.qty);
        }, 0);
       
+        //saving in web storage
+      // localStorage.setItem('cartTotal',JSON.stringify(state.cartTotal));
+       localStorage.setItem('cart',JSON.stringify(state.cart));
       },
       
       plusCart(state,payload){
@@ -86,6 +106,10 @@ const state=  ({
            return parseFloat(accumulator) + parseFloat(object.product.prix*object.qty);
          }, 0);
       
+       //saving in web storage
+        // localStorage.setItem('cartTotal',JSON.stringify(state.cartTotal));
+         localStorage.setItem('cart',JSON.stringify(state.cart));
+
         }
   
 })

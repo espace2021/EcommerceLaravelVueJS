@@ -46,10 +46,11 @@
 
 import { ref, onMounted } from 'vue';
 
+
 const Produits = ref([]);
 
 onMounted(() => {
-       store.commit('Articlestore/initialiseStore')
+ 
        console.log(store.state.Articlestore.cart)
        getProduits();
            }
